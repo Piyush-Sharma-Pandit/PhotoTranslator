@@ -29,9 +29,22 @@
 		4B2EC9D12DD138FC002A78C3 /* PhotoTranslatorNewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoTranslatorNewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4B2EC9EF2DD1397F002A78C3 /* Exceptions for "PhotoTranslatorNew" folder in "PhotoTranslatorNew" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 4B2EC9B62DD138FB002A78C3 /* PhotoTranslatorNew */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4B2EC9B92DD138FB002A78C3 /* PhotoTranslatorNew */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4B2EC9EF2DD1397F002A78C3 /* Exceptions for "PhotoTranslatorNew" folder in "PhotoTranslatorNew" target */,
+			);
 			path = PhotoTranslatorNew;
 			sourceTree = "<group>";
 		};
@@ -399,6 +412,7 @@
 				DEVELOPMENT_TEAM = 8DYK7XTVU9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PhotoTranslatorNew/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +442,7 @@
 				DEVELOPMENT_TEAM = 8DYK7XTVU9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PhotoTranslatorNew/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
