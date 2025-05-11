@@ -138,11 +138,8 @@ struct CameraView: View {
                 .ignoresSafeArea()
             ZStack {
                 Color.black.opacity(0.7).ignoresSafeArea()
-                VStack(spacing: 24) {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .yellow))
-                        .scaleEffect(2.0)
-                        .padding(.bottom, 10)
+                VStack(spacing: 28) {
+                    ScanAnimation()
                     Text("Translating...")
                         .font(.title2.bold())
                         .foregroundColor(.white)
