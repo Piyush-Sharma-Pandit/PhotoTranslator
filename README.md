@@ -1,56 +1,46 @@
 
+
 # PhotoTranslator
 
-## Features
-
-- **Live Camera Preview:** 
-- **Photo Capture & Gallery Import:** 
-- **Animated Scan UI:** 
-- **Translation Overlay:** On completion, see your original photo and the translated text on a modern, readable card.
-- **Retry / Recapture:** Easy to retake the photo if you made a mistake.
-- **Camera Privacy:** Camera is only active when the user is on the camera screen.
+An iOS 17+ app (SwiftUI, MVVM) for translating text in photos using a provided AI endpoint.
 
 ---
 
 ## Setup & Run
 
-1. **Xcode:** Requires Xcode 15+, iOS 17+ SDK.
-2. **Clone & Open:**  
-   ```sh
-   git clone https://github.com/Piyush-Sharma-Pandit/PhotoTranslator
-   cd PhotoTranslator
-   open PhotoTranslatorNew.xcodeproj
-   ```
-3. **Permissions:**  
-   - **Camera:** Required for live capture. Requests on first use.
-   - **Photo Library:** Required for picking images from the gallery.
-4. **Build & Run:** On device with camera (photo picking works in sim).
+- **Xcode:** Requires Xcode 15+ and iOS 17+.
+- **Permissions:** The app requests Camera (for photo capture) and Photo Library (for selecting images).
+- **Launch:** Build & run on device or simulator. Grant required permissions when prompted.
 
 ---
 
 ## Architecture Overview
 
-- **MVVM Pattern:**  
-  - **View:** SwiftUI views only handle UI logic and delegate all state/business logic.
-  - **ViewModel:** Owns camera setup, session control, photo state, translation flow, and exposes published properties.
-  - **Model:** `TranslationResult` for parsing backend response.
-  - **Service:** `TranslationService` handles networking (async/await).
-- **Concurrency:**  
-  - Camera setup and translation network handled via `async/await`, ensuring UI responsiveness.
-- **Camera:**  
-  - Uses `AVCaptureSession` for preview/capture.
-  - Shows/hides session as user navigates (green dot privacy compliant).
-- **Animations:**  
-  - Capture animation ("flash").
-  - processing/scanning overlay with animated border and moving scan-line.
-  - Result screen transitions.
-- **Photo Picker:**  
-  - SwiftUI-native, iOS 17 PhotosPicker integration.
+- **MVVM Pattern**:  
+  - `CameraViewModel` manages all camera, photo, translation, and state logic.
+  - `CameraView` is a pure SwiftUI view, rendering the camera, capture, loading, and result flows.
+  - `TranslationService` handles async networking.
+- **Tradeoffs:**  
+  - Single screen user flow for clarity and simplicity.
+  - No persistent storage, no cropping (for demo speed and clarity).
+  - All animation is pure SwiftUI.
 
 ---
 
-## Error Handling
+## Offline & Error Handling
 
-- **Offline:** If networking fails, users simply retry after regaining network.
-- **Permission Denied:** If camera or photos access is denied, user is prompted to enable in Settings.
-- **Failure Cases:** If translation fails, UI resets and user can try again.
+- If network/translation fails or API is unreachable, the UI resets and the user can retry.
+- App displays camera/gallery permissions dialogs if access is denied.
+- No caching/history is implemented, but the structure allows easy future integration.
+
+---
+
+## Tests
+
+- `CameraViewModel` and `TranslationService` logic can be unit-tested by injecting mocks for camera and network.
+- UI is deterministic and can be covered with Xcode UI Tests.
+- (Bonus: See `PhotoTranslatorNewTests` for ViewModel/networking test stubs if included.)
+
+---
+
+
